@@ -7,5 +7,8 @@ out/
 /broadcast/*/31337/
 /broadcast/**/dry-run/
 
+# JS dependencies
+node_modules/
+
 # Dotenv file
 .env
