@@ -13,12 +13,13 @@ import {ERC20Permit} from "lib/openzeppelin-contracts/contracts/token/ERC20/exte
 contract CowSwapTestToken is ERC20, AccessControl, ERC20Permit {
     bytes32 public constant MINTER_BURNER_ROLE =
         keccak256("MINTER_BURNER_ROLE");
-    string internal constant NAME = "CoW Swap Test Token v1";
 
     constructor(
         address admin,
-        address balanceManager
-    ) ERC20(NAME, "COWTEST1") ERC20Permit(NAME) {
+        address balanceManager,
+        string memory name,
+        string memory symbol
+    ) ERC20(name, symbol) ERC20Permit(name) {
         _grantRole(DEFAULT_ADMIN_ROLE, admin);
         _grantRole(MINTER_BURNER_ROLE, balanceManager);
     }

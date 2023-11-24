@@ -27,17 +27,15 @@ forge build
 Run the following commands to deploy the contract in the specified network and verify it on the chain explorer.
 
 ```sh
-export INFURA_API_KEY=<your Infura key here>
 forge create --rpc-url goerli \
-    --constructor-args <address of the contract admin> <address of an address that can freely mint and burn token> \
+    --constructor-args <address of the contract admin> <address that can freely mint and burn token> <token name> <token symbol> \
     --private-key <your_private_key> \
     --etherscan-api-key <your_etherscan_api_key> \
     --verify \
     src/CowSwapTestToken.sol:CowSwapTestToken
 ```
 
-Valid parameters for `rpc-url` are `mainnet`, `goerli`, `gnosischain`.
-All networks except latter require an Infura API key.
+Valid parameters for `rpc-url` are `mainnet`, `goerli`, `gnosischain`, `sepolia`.
 You can also specify your own RPC URL.
 
 ### Code formatting
