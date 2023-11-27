@@ -8,9 +8,11 @@ contract CowSwapTestTokenTest is Test {
     CowSwapTestToken public token;
     address internal admin = address(0x42);
     address internal minterBurner = address(0x21);
+    string internal name = "Token name";
+    string internal symbol = "SYM";
 
     function setUp() public {
-        token = new CowSwapTestToken(admin, minterBurner);
+        token = new CowSwapTestToken(admin, minterBurner, name, symbol);
     }
 
     function testSetRole() public {
@@ -53,5 +55,13 @@ contract CowSwapTestTokenTest is Test {
         vm.prank(minterBurner);
         token.burn(user, balanceBurnt);
         assertEq(token.balanceOf(user), initialBalance - balanceBurnt);
+    }
+
+    function testName() public {
+        assertEq(token.name(), name);
+    }
+
+    function testSymbol() public {
+        assertEq(token.symbol(), symbol);
     }
 }
